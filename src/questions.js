@@ -47,8 +47,62 @@ const addEngineer = () => {
 			message: "Please enter the Engineer name",
 			default: "Engineer Man, or Woman!",
 		},
-	]);
+		{
+			type: "input",
+			name: "engineerEmail",
+			message: "Please enter the Engineer's e-mail",
+			default: "engineer@engineer.com",
+		},
+		{
+			type: "input",
+			name: "engineerGithub",
+			message: "Please enter the Engineer's github",
+			default: "http://www.github.com/engineer",
+		},
+		{
+			type: "confirm",
+			name: "additionalEngineer",
+			message: "Do you wish to add another Engineer?",
+			default: false,
+		},
+	]).then((res) => {
+		if (res.additionalEngineer){
+			addEngineer();
+		}
+	});
 };
 
+const addIntern = () => {
+	inquirer.prompt([
+		{
+			type: "input",
+			name: "internName",
+			message: "Please enter the Engineer name",
+			default: "Engineer Man, or Woman!",
+		},
+		{
+			type: "input",
+			name: "internEmail",
+			message: "Please enter the Engineer's e-mail",
+			default: "engineer@engineer.com",
+		},
+		{
+			type: "input",
+			name: "internSchool",
+			message: "Please enter the Intern's school",
+			default: "UNC",
+		},
+		{
+			type: "confirm",
+			name: "additionalIntern",
+			message: "Do you wish to add another Intern?",
+			default: false,
+		},
+	]).then((res) => {
+		if (res.additionalIntern){
+			addIntern()
+		}
+	});
+};
 // const askQuestions = () => {};
 module.exports = { managerQuestions };
