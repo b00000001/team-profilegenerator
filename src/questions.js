@@ -1,4 +1,7 @@
 const inquirer = require("inquirer");
+const mgr = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 const manager = [];
 const interns = [];
 const engineers = [];
@@ -13,6 +16,12 @@ const managerQuestions = () => {
 			},
 			{
 				type: "input",
+				name: "employeeID",
+				message: "Please enter the team manager's ID",
+				default: "Default Manager Name",
+			},
+			{
+				type: "input",
 				name: "managerEmail",
 				message: "Please enter the team manager's e-mail address.",
 				default: "team@manager.com",
@@ -21,11 +30,12 @@ const managerQuestions = () => {
 				type: "list",
 				name: "newEmployee",
 				message: "What type of employee would you like to add?",
-				choices: ["Engineer", "Intern", "I don't want to add Employee"],
+				choices: ["Engineer", "Intern", "I am finished building my team."],
 				default: "true",
 			},
 		])
 		.then((res) => {
+			res.officeNumber = Math.floor(Math.random() * 100);
 			makeManager(res);
 			switch (res.newEmployee) {
 				case "Engineer":
@@ -49,6 +59,12 @@ const makeEngineer = () => {
 				name: "engineerName",
 				message: "Please enter the Engineer name",
 				default: "Engineer Male or Female",
+			},
+			{
+				type: "input",
+				name: "employeeID",
+				message: "Please enter the Engineer's ID",
+				default: "engineer@engineer.com",
 			},
 			{
 				type: "input",
@@ -78,7 +94,16 @@ const makeEngineer = () => {
 		])
 		.then((res) => {
 			engineers.push(res);
-
+			for (engineer of engineers) {
+				const eng = new Engineer(
+					engineer.engineerName,
+					engineer.employeeID,
+					engineer.engineerEmail,
+					"Engineer",
+					engineer.engineerGithub
+				);
+				console.log("Engineer Object", eng);
+			}
 			switch (res.newEmployeeType) {
 				case "Engineer":
 					makeEngineer();
@@ -103,6 +128,12 @@ const makeIntern = () => {
 				name: "internName",
 				message: "Please enter the Intern name",
 				default: "Intern Male or Female",
+			},
+			{
+				type: "input",
+				name: "employeeID",
+				message: "Please enter the Intern's ID",
+				default: "engineer@engineer.com",
 			},
 			{
 				type: "input",
@@ -132,6 +163,15 @@ const makeIntern = () => {
 		])
 		.then((res) => {
 			interns.push(res);
+			for (intern of interns) {
+				const newIntern = new Intern(
+					res.internName,
+					res.employeeID,
+					res.internEmail,
+					res.internSchool
+				);
+				console.log("intern object", newIntern);
+			}
 			switch (res.newEmployeeType) {
 				case "Engineer":
 					makeEngineer();
@@ -149,7 +189,13 @@ const makeIntern = () => {
 };
 const makeManager = (res) => {
 	manager.push(res);
-	console.log(manager);
+	const newMgr = new mgr(
+		res.managerName,
+		res.employeeID,
+		res.managerEmail,
+		res.officeNumber
+	);
+	console.log(newMgr);
 	// manager.push = res;
 };
 
