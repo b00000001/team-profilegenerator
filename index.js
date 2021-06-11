@@ -3,7 +3,7 @@ const questions = require("./src/questions");
 const handleRes = require("./src/handleRes");
 
 init = () => {
-	questions.managerQuestions();
+	questions.setupQuestions();
 };
 
 init();

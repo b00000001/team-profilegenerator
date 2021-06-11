@@ -27,18 +27,28 @@ const managerQuestions = () => {
 		])
 		.then((res) => {
 			makeManager(res);
-			makeEmployee(res, res.newEmployee);
+			switch (res.newEmployee) {
+				case "Engineer":
+					makeEngineer();
+					break;
+				case "Intern":
+					makeIntern();
+					break;
+				default:
+					console.log("Thank you.");
+			}
+			// makeEmployee(res, res.newEmployee);
 		});
 };
 
-const addEngineer = () => {
+const makeEngineer = () => {
 	inquirer
 		.prompt([
 			{
 				type: "input",
 				name: "engineerName",
 				message: "Please enter the Engineer name",
-				default: "Engineer Man, or Woman!",
+				default: "Engineer Male or Female",
 			},
 			{
 				type: "input",
@@ -67,22 +77,32 @@ const addEngineer = () => {
 			},
 		])
 		.then((res) => {
-			if (res.newEmployee) {
-				makeEmployee(res, "newEmployeeType");
-				// console.log(engineers);
+			engineers.push(res);
+
+			switch (res.newEmployeeType) {
+				case "Engineer":
+					makeEngineer();
+					break;
+				case "Intern":
+					makeIntern();
+					break;
+				default:
+					console.log("Thank you.");
+					console.log(
+						`Engineers: ${engineers.length} Interns: ${interns.length}`
+					);
 			}
-			// console.log(engineers);
 		});
 };
 
-const addIntern = () => {
+const makeIntern = () => {
 	inquirer
 		.prompt([
 			{
 				type: "input",
 				name: "internName",
 				message: "Please enter the Intern name",
-				default: "Engineer Man, or Woman!",
+				default: "Intern Male or Female",
 			},
 			{
 				type: "input",
@@ -102,35 +122,38 @@ const addIntern = () => {
 				message: "Do you wish to add another Employee?",
 				default: true,
 			},
+			{
+				type: "list",
+				name: "newEmployeeType",
+				message: "What type of employee would you like to add?",
+				choices: ["Engineer", "Intern", "I don't want to add Employee"],
+				when: (answer) => answer.newEmployee,
+			},
 		])
 		.then((res) => {
-			if (res.newEmployee) {
-				makeEmployee(res, "Intern");
-				// console.log(interns);
+			interns.push(res);
+			switch (res.newEmployeeType) {
+				case "Engineer":
+					makeEngineer();
+					break;
+				case "Intern":
+					makeIntern();
+					break;
+				default:
+					console.log("Thank you.");
+					console.log(
+						`Engineers: ${engineers.length} Interns: ${interns.length}`
+					);
 			}
-			// console.log(interns);
 		});
 };
 const makeManager = (res) => {
-	console.log("Manager Info", res);
-	manager.push = res;
-};
-const makeEmployee = (res, type) => {
-	if (res.newEmployee) {
-		switch (type) {
-			case "Intern":
-				res.internId = Math.floor(Math.random() * 100);
-				interns.push(res);
-				addIntern();
-				break;
-			case "Engineer":
-				res.engineerId = Math.floor(Math.random() * 100);
-				console.log("make engineer");
-				addEngineer();
-				engineers.push(res);
-				break;
-		}
-	}
+	manager.push(res);
+	console.log(manager);
+	// manager.push = res;
 };
 
-module.exports = { managerQuestions };
+const setupQuestions = () => {
+	managerQuestions();
+};
+module.exports = { setupQuestions };
