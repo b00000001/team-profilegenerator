@@ -1,8 +1,12 @@
 const inquirer = require("inquirer");
-const questions = require("./src/questions");
+const { setupQuestions } = require("./src/questions");
+const render = require("./lib/htmlRenderer");
+const fs = require("fs");
+
+const employees = require("./src/questions");
 
 init = () => {
-	questions.setupQuestions();
+	setupQuestions();
 };
 
 init();
