@@ -15,13 +15,13 @@ const managerQuestions = () => {
 				type: "input",
 				name: "managerName",
 				message: "Please enter the team manager's name",
-				default: "Default Manager Name",
+				default: "Tim",
 			},
 			{
 				type: "input",
 				name: "employeeID",
 				message: "Please enter the team manager's ID",
-				default: "1234",
+				default: "1002",
 			},
 			{
 				type: "input",
@@ -61,7 +61,7 @@ const makeEngineer = () => {
 				type: "input",
 				name: "engineerName",
 				message: "Please enter the Engineer name",
-				default: "Engineer Male or Female",
+				default: "Corey Engineer",
 			},
 			{
 				type: "input",
@@ -132,7 +132,7 @@ const makeIntern = () => {
 				type: "input",
 				name: "internName",
 				message: "Please enter the Intern name",
-				default: "Intern Male or Female",
+				default: "Alex Intern",
 			},
 			{
 				type: "input",

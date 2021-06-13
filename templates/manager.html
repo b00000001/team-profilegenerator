@@ -1,15 +1,17 @@
 <!-- Starter file provided by Instructor (03/09/2021) AC -->
 
-<div class='card notification is-link'>
-    <div class='card-content'>
-        <h2>{{ name }}</h2>
-        <h3>{{ role }}</h3>
-    </div>
-    <div>
-        <ul>
-            <li>ID: {{ id }}</li>
-            <li>Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
-            <li>Office number: {{ officeNumber }}</li>
-        </ul>
+<div class="column is-one-third is-flex">
+    <div class='card notification is-link'>
+        <div class='card-content is-size-3'>
+            <h2>{{ name }}</h2>
+            <h3>{{ role }}</h3>
+        </div>
+        <div class='is-size-4'>
+            <ul>
+                <li>ID: {{ id }}</li>
+                <li>Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
+                <li>Office number: {{ officeNumber }}</li>
+            </ul>
+        </div>
     </div>
 </div>
