@@ -20,6 +20,10 @@ This is a profile generator demo for a team consisting of a Manager and a custom
    )
 2. Install NPM packages. (`npm install`)
 
+# Usage
+
+![Usage](./assets/appdemo.gif)
+
 # License
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
