@@ -5,7 +5,7 @@ const Employee = require("../lib/Employee");
 const testMgr = new Manager("Rita", "33", "rita@rita.com", "100");
 test("Can set office number via constructor argument", () => {
 	const obj = testMgr;
-	expect(obj.officeNum).toEqual("100");
+	expect(obj.officeNumber).toEqual("100");
 });
 
 test('getRole() should return "Manager"', () => {
@@ -15,5 +15,5 @@ test('getRole() should return "Manager"', () => {
 
 test("Can get office number via getOffice()", () => {
 	const obj = testMgr;
-	expect(obj.getOffice()).toEqual("100");
+	expect(obj.getOfficeNumber()).toEqual("100");
 });
