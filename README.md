@@ -45,6 +45,7 @@ Contributions are what make the open source community such an amazing place to b
 # Tests
 
 - Tests are located in the _tests_ folder of the application.
+  ![Tests](./assets/testdemogif.gif)
 
 # Questions
 
